@@ -23,6 +23,7 @@ public class PlayerAttackController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+<<<<<<< Updated upstream
         if (collision.gameObject.tag == "enemy")
         {
             GameObject.Destroy(this.gameObject);
@@ -33,5 +34,13 @@ public class PlayerAttackController : MonoBehaviour
             Physics.IgnoreCollision(collision.gameObject, GetComponent<Collider>());
         }
         */
+=======
+        if (collision.gameObject.tag == "Player")
+        {
+            //ScoreManagetScript.UpdateScore();
+            GameObject.Destroy(this.gameObject);
+            GameObject.Destroy(collision.gameObject);
+        }
+>>>>>>> Stashed changes
     }
 }
