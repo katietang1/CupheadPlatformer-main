@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
 
     float horizontalMove = 0f;
+
+    public GameObject attack;
+
     // Update is called once per frame
     void Update()
     {
@@ -43,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("IsJumping", true);
             }
         }
+
+        Attack();
     }
 
     public void OnLanding()
@@ -70,6 +75,16 @@ public class PlayerMovement : MonoBehaviour
         if (jump)
         {
             jumpFlag = true;
+        }
+    }
+
+    void Attack()
+    {   
+        // if attack key pressed
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            // create attack object at player location
+            GameObject.Instantiate(attack, transform);
         }
     }
 }
