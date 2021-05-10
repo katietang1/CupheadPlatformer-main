@@ -76,15 +76,18 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpFlag = true;
         }
+
+      
     }
 
     void Attack()
-    {   
-        // if attack key pressed
+    {
         if (Input.GetKeyDown(KeyCode.F))
         {
+            Debug.Log("shot");
             // create attack object at player location
             GameObject.Instantiate(attack, transform);
         }
     }
+
 }

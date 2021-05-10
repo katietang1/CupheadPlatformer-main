@@ -10,7 +10,7 @@ public class PlayerAttackController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(speed, 0);
+        rb.velocity = new Vector2(speed, rb.velocity.y);
     }
 
     // Update is called once per frame
@@ -19,5 +19,19 @@ public class PlayerAttackController : MonoBehaviour
         //if the attack is off the screen to the right, then it should disappear
         if (Camera.main.WorldToViewportPoint(this.transform.position).x > 1)
             Destroy(this.gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            GameObject.Destroy(this.gameObject);
+        }
+        /*
+        if (collision.gameObject.tag == "Player")
+        {
+            Physics.IgnoreCollision(collision.gameObject, GetComponent<Collider>());
+        }
+        */
     }
 }
