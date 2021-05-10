@@ -559,7 +559,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03835559, y: -0.095887184}
+  m_Offset: {x: 0.00025731325, y: -0.076581}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -570,7 +570,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2845578, y: 2.6269636}
+  m_Size: {x: 1.207332, y: 2.7041893}
   m_EdgeRadius: 0
 --- !u!50 &848778898
 Rigidbody2D:
@@ -737,6 +737,7 @@ MonoBehaviour:
   hasSpeedPotion: 0
   potionModAmount: 0
   jumpClip: {fileID: 0}
+  attack: {fileID: 0}
 --- !u!1 &849742829
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +749,7 @@ GameObject:
   - component: {fileID: 849742831}
   - component: {fileID: 849742830}
   - component: {fileID: 849742832}
+  - component: {fileID: 849742833}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -839,6 +841,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &849742833
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849742829}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.05232358, y: -0.091575146}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9.375, y: 9.375}
+    newSize: {x: 9.375, y: 9.375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5259948, y: 3.0173059}
+  m_EdgeRadius: 0
 --- !u!1001 &938922798
 PrefabInstance:
   m_ObjectHideFlags: 0
