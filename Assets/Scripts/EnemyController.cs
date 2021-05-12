@@ -35,31 +35,31 @@ public class EnemyController : MonoBehaviour
 
     private void CheckHP()
     {
-        if (enemyHealth == 70)
+        if (enemyHealth < 75 && enemyHealth >= 70)
         {
             hearts[0].GetComponent<SpriteRenderer>().sprite = halfHeart;
         }
-        else if (enemyHealth == 60)
+        else if (enemyHealth < 70 && enemyHealth >= 60)
         {
             hearts[0].GetComponent<SpriteRenderer>().sprite = emptyHeart;
         }
-        else if (enemyHealth == 50)
+        else if (enemyHealth < 60 && enemyHealth >= 50)
         {
             hearts[1].GetComponent<SpriteRenderer>().sprite = halfHeart;
         }
-        else if (enemyHealth == 40)
+        else if (enemyHealth < 50 && enemyHealth >= 40)
         {
             hearts[1].GetComponent<SpriteRenderer>().sprite = emptyHeart;
         }
-        else if (enemyHealth == 30)
+        else if (enemyHealth < 40 && enemyHealth >= 30)
         {
             hearts[2].GetComponent<SpriteRenderer>().sprite = halfHeart;
         }
-        else if (enemyHealth == 20)
+        else if (enemyHealth < 20 && enemyHealth >= 10)
         {
             hearts[2].GetComponent<SpriteRenderer>().sprite = emptyHeart;
         }
-        else if (enemyHealth == 10)
+        else if (enemyHealth < 10 && enemyHealth >= 0)
         {
             hearts[3].GetComponent<SpriteRenderer>().sprite = halfHeart;
         }
@@ -93,7 +93,7 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "PlayerUlt")
         {
             invincibleTime = 1200;
-            enemyHealth -= 5;            
+            enemyHealth -= 5;
             CheckHP();
         }
     }
