@@ -185,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "EnemyProjectile")
+        if (collision.gameObject.tag == "EnemyProjectile" || collision.gameObject.tag == "Enemy")
         {
             invincibleTime = 1200;
             healthPoints--;
