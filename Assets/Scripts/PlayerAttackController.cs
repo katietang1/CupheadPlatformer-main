@@ -9,8 +9,7 @@ public class PlayerAttackController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(speed, rb.velocity.y);
+        changeDirection(true);
     }
 
     // Update is called once per frame
@@ -19,23 +18,29 @@ public class PlayerAttackController : MonoBehaviour
         //if the attack is off the screen to the right, then it should disappear
         if (Camera.main.WorldToViewportPoint(this.transform.position).x > 1)
             Destroy(this.gameObject);
+        else if (Camera.main.WorldToViewportPoint(this.transform.position).x < 0)
+            Destroy(this.gameObject);
+    }
+
+    public void changeDirection(bool isRight)
+    {
+        rb = GetComponent<Rigidbody2D>();
+        if (isRight)
+        {
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(speed * -1, rb.velocity.y);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             // update score here
             GameObject.Destroy(this.gameObject);
         }
-        /*
-        if (collision.gameObject.tag == "Player")
-        {
-            Physics.IgnoreCollision(collision.gameObject, GetComponent<Collider>());
-        }
-        */
-
-      
-        
     }
 }

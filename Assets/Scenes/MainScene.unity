@@ -780,7 +780,7 @@ MonoBehaviour:
   hasSpeedPotion: 0
   potionModAmount: 0
   jumpClip: {fileID: 8300000, guid: 41677b43e3a2e224dbd8c6054a6c1818, type: 3}
-  attack: {fileID: 8610171772068902991, guid: bacd63a70d798cf49844eafe5999fc81, type: 3}
+  attack: {fileID: 2067630433252902781, guid: bacd63a70d798cf49844eafe5999fc81, type: 3}
 --- !u!1 &849742829
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +795,7 @@ GameObject:
   - component: {fileID: 849742833}
   m_Layer: 11
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

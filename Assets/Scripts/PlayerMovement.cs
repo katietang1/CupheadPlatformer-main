@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     float horizontalMove = 0f;
 
-    public GameObject attack;
+    public PlayerAttackController attack;
 
     // Update is called once per frame
     void Update()
@@ -46,8 +46,21 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("IsJumping", true);
             }
         }
-
+        DirectionCheck();
         Attack();
+    }
+
+    private void DirectionCheck()
+    {
+        Vector3 local = transform.localScale;
+        if (local.y > 0)
+        {
+            attack.changeDirection(true);
+        }
+        else
+        {
+            attack.changeDirection(false);
+        }
     }
 
     public void OnLanding()
@@ -86,7 +99,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("shot");
             // create attack object at player location
-            GameObject.Instantiate(attack, transform);
+            Vector3 pos = transform.position;
+            Quaternion rotation = transform.rotation;
+            Instantiate(attack,pos,rotation);
         }
     }
 
