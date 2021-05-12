@@ -35,7 +35,6 @@ public class PlayerAttackController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            // update score here
             GameObject.Destroy(this.gameObject);
         }
     }
