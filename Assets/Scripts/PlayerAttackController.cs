@@ -6,11 +6,6 @@ public class PlayerAttackController : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D rb;
-    // Start is called before the first frame update
-    void Start()
-    {
-        changeDirection(true);
-    }
 
     // Update is called once per frame
     void Update()
@@ -31,7 +26,8 @@ public class PlayerAttackController : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector2(speed * -1, rb.velocity.y);
+            Debug.Log("reverse");
+            rb.velocity = new Vector2(-4, rb.velocity.y);
         }
     }
 

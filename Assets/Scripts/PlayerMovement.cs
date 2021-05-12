@@ -22,8 +22,22 @@ public class PlayerMovement : MonoBehaviour
 
     float horizontalMove = 0f;
 
-    public PlayerAttackController attack;
+    public GameObject normalAttack;
+    public GameObject ultAttack;
+    public float bulletSpeed;
+    public float ultSpeed;
+    private int timer = 0;
 
+    public int healthPoints = 4;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+    public GameObject[] hearts = new GameObject[4];
+    private int invincibleTime = 0;
+
+    void Start()
+    {
+        ResetHP();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -46,20 +60,73 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("IsJumping", true);
             }
         }
-        DirectionCheck();
+
+        if (timer > 0)
+        {
+            timer--;
+        }
+        if (invincibleTime > 0)
+        {
+            invincibleTime--;
+        }
         Attack();
     }
 
-    private void DirectionCheck()
+    private void CheckHP()
     {
-        Vector3 local = transform.localScale;
-        if (local.y > 0)
+        if (healthPoints == 3)
         {
-            attack.changeDirection(true);
+            hearts[3].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+        }
+        else if (healthPoints == 2)
+        {
+            hearts[2].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+        }
+        else if (healthPoints == 1)
+        {
+            hearts[1].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+        }
+        if (healthPoints == 0)
+        {
+            hearts[0].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+        }
+    }
+
+    private void ResetHP()
+    {
+        healthPoints = 4;
+        for (int i = 0; i < 4; i++)
+        {
+            hearts[i].GetComponent<SpriteRenderer>().sprite = fullHeart;
+        }
+        hearts[0].transform.position = new Vector3(-8, 4, 0);
+        hearts[1].transform.position = new Vector3(-7.5f, 4, 0);
+        hearts[2].transform.position = new Vector3(-7, 4, 0);
+        hearts[3].transform.position = new Vector3(-6.5f, 4, 0);
+    }
+
+    private void Shoot(GameObject attack, float speed)
+    {
+        GameObject clone;
+        Rigidbody2D rb;
+
+        Vector3 pos = transform.position;
+        Quaternion rotation = transform.rotation;
+        clone = Instantiate(attack, pos, rotation);
+        rb = clone.GetComponent<Rigidbody2D>();
+
+        Vector3 local = transform.localScale;
+        Debug.Log(transform.localScale.x);
+        if (local.x > 0)
+        {
+            rb.velocity = new Vector2(speed, rb.velocity.y);
         }
         else
         {
-            attack.changeDirection(false);
+            rb.velocity = new Vector2(speed * -1, rb.velocity.y);
+            Vector3 theScale = clone.transform.localScale;
+            theScale.x *= -1;
+            clone.transform.localScale = theScale;
         }
     }
 
@@ -97,11 +164,32 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("shot");
-            // create attack object at player location
-            Vector3 pos = transform.position;
-            Quaternion rotation = transform.rotation;
-            Instantiate(attack,pos,rotation);
+            if (timer == 0)
+            {
+                timer = 400;
+                // create attack object at player location
+                Shoot(normalAttack, bulletSpeed);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            if (timer == 0)
+            {
+                timer = 400;
+                // create attack object at player location
+                Shoot(ultAttack, ultSpeed);
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyProjectile")
+        {
+            invincibleTime = 1200;
+            healthPoints--;
+            CheckHP();
         }
     }
 
