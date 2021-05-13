@@ -7,6 +7,7 @@ public class MenuScript : MonoBehaviour
 {
     public void PlayGame()
     {
+        Debug.Log("Playing game");
         SceneManager.LoadScene("MainScene");
     }
 
