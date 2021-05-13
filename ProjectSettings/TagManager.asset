@@ -8,6 +8,7 @@ TagManager:
   - EnemyProjectile
   - PlayerAttack
   - PlayerUlt
+  - Platforms
   layers:
   - Default
   - TransparentFX
