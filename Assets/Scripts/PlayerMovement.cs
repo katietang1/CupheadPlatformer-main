@@ -99,10 +99,10 @@ public class PlayerMovement : MonoBehaviour
         {
             hearts[i].GetComponent<SpriteRenderer>().sprite = fullHeart;
         }
-        hearts[0].transform.position = new Vector3(-8, 4, 0);
-        hearts[1].transform.position = new Vector3(-7.5f, 4, 0);
-        hearts[2].transform.position = new Vector3(-7, 4, 0);
-        hearts[3].transform.position = new Vector3(-6.5f, 4, 0);
+        hearts[0].transform.position = new Vector3(-8, 4, -1);
+        hearts[1].transform.position = new Vector3(-7.5f, 4, -1);
+        hearts[2].transform.position = new Vector3(-7, 4, -1);
+        hearts[3].transform.position = new Vector3(-6.5f, 4, -1);
     }
 
     private void Shoot(GameObject attack, float speed)
