@@ -29,6 +29,8 @@ public class EnemyController : MonoBehaviour
     public Vector3 corner4;
     private bool facingright = false;
 
+    private bool hasWon = false;
+
     void Start()
     {
         ResetHP();
@@ -114,6 +116,7 @@ public class EnemyController : MonoBehaviour
         if (enemyHealth == 0)
         {
             hearts[3].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+            hasWon = true;
         }
     }
     private void ResetHP()
@@ -214,6 +217,16 @@ public class EnemyController : MonoBehaviour
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+        }
+    }
+
+    private void Won()
+    {
+        if (hasWon)
+        {
+            //Play enemy death animation
+            //Play won sound
+            //SceneManager.LoadScene("WonScene");
         }
     }
 }

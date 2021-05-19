@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject ultReady;
     public GameObject[] hearts = new GameObject[4];
     private int invincibleTime = 0;
+    private bool hasLost = false;
 
     void Start()
     {
@@ -101,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
         if (healthPoints == 0)
         {
             hearts[0].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+            hasLost = true;
         }
     }
 
@@ -207,6 +209,16 @@ public class PlayerMovement : MonoBehaviour
             healthPoints--;
             CheckHP();
         }
+    }
+
+    private void Lost()
+    {
+        if (hasLost)
+        {
+            //Play lose sound effect
+            //SceneManager.LoadScene("LoseScene");
+        }
+
     }
 
 }
