@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public int potionModAmount = 0;
 
     public AudioClip jumpClip;
+    public AudioClip shootClip;
 
     private float potionTimeMax = 10f;
     private float potionTimeCur = 0f;
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject normalAttack;
     public GameObject ultAttack;
+    public int ultPoints = 100;
     public float bulletSpeed;
     public float ultSpeed;
     private int timer = 0;
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public int healthPoints = 4;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public GameObject ultReady;
     public GameObject[] hearts = new GameObject[4];
     private int invincibleTime = 0;
 
@@ -41,6 +44,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ultPoints >= 20)
+        {
+            ultReady.GetComponent<SpriteRenderer>().enabled = true;
+        }
+        else
+        {
+            ultReady.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -115,8 +127,9 @@ public class PlayerMovement : MonoBehaviour
         clone = Instantiate(attack, pos, rotation);
         rb = clone.GetComponent<Rigidbody2D>();
 
+        AudioSource.PlayClipAtPoint(shootClip, transform.position);
+
         Vector3 local = transform.localScale;
-        Debug.Log(transform.localScale.x);
         if (local.x > 0)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
@@ -166,6 +179,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (timer == 0)
             {
+                Debug.Log("Shot shot");
                 timer = 400;
                 // create attack object at player location
                 Shoot(normalAttack, bulletSpeed);
@@ -174,9 +188,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if (timer == 0)
+            if (timer == 0 && (ultPoints >= 20))
             {
                 timer = 400;
+                ultPoints -= 20;
+                Debug.Log("shot ult");
                 // create attack object at player location
                 Shoot(ultAttack, ultSpeed);
             }
