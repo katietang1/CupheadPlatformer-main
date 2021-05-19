@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour
     public PlayerMovement player;
 
     public AudioClip hitClip;
+    public AudioClip fireClip1;
+    public AudioClip fireClip2;
 
     private int timer = 0;
 
@@ -136,18 +138,18 @@ public class EnemyController : MonoBehaviour
     {
         if(bulletTimer == 0)
         {
-            Shoot(normalAttack, bulletSpeed);
+            Shoot(normalAttack, bulletSpeed, fireClip1);
             bulletTimer = 2000;
             Debug.Log("shot enemy");
         }
         if(bulletTimer2 == 0)
         {
-            Shoot(secondAttack, bulletSpeed);
+            Shoot(secondAttack, bulletSpeed, fireClip2);
             bulletTimer2 = 1000;
         }
     }
 
-    private void Shoot(GameObject attack, float speed)
+    private void Shoot(GameObject attack, float speed, AudioClip fireClip)
     {
         GameObject clone;
         Rigidbody2D rb;
@@ -156,6 +158,8 @@ public class EnemyController : MonoBehaviour
         Quaternion rotation = transform.rotation;
         clone = Instantiate(attack, pos, rotation);
         rb = clone.GetComponent<Rigidbody2D>();
+
+        AudioSource.PlayClipAtPoint(fireClip, transform.position);
 
         Vector3 local = transform.localScale;
         Debug.Log(transform.localScale.x);

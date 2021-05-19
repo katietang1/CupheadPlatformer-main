@@ -1210,6 +1210,8 @@ MonoBehaviour:
   - {fileID: 1305258258}
   player: {fileID: 848778903}
   hitClip: {fileID: 8300000, guid: 04bd4cbb8a6513d4ca73a121315036ec, type: 3}
+  fireClip1: {fileID: 8300000, guid: 7683e687034ebb34582779658abbdfe3, type: 3}
+  fireClip2: {fileID: 8300000, guid: a87c7385a65a0ee41b07387504e65a3b, type: 3}
   normalAttack: {fileID: 1448239018278594741, guid: 3b5c054da9b714366a92103945d3f88a,
     type: 3}
   secondAttack: {fileID: 4325758475859275025, guid: 8a27e797628ce45d094dc84b4d27fc1b,

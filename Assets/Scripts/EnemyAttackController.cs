@@ -6,6 +6,7 @@ public class EnemyAttackController : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D rb;
+    public AudioClip collisionClip;
 
     // Update is called once per frame
     void Update()
@@ -19,9 +20,14 @@ public class EnemyAttackController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "PlayerAttack")
+        if (collision.gameObject.tag == "Player")
         {
             GameObject.Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "PlayerAttack")
+        {
+            GameObject.Destroy(this.gameObject);
+            AudioSource.PlayClipAtPoint(collisionClip, transform.position);
         }
     }
 }

@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  collisionClip: {fileID: 8300000, guid: 1bd7c55f91c022e48a1121eafa18aab6, type: 3}
 --- !u!58 &7086539609990836723
 CircleCollider2D:
   m_ObjectHideFlags: 0
