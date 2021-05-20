@@ -103,26 +103,38 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (healthPoints == 5)
         {
+            hearts[3].GetComponent<SpriteRenderer>().sprite = emptyHeart;
             hearts[2].GetComponent<SpriteRenderer>().sprite = halfHeart;
         }
         else if (healthPoints == 4)
         {
+            hearts[3].GetComponent<SpriteRenderer>().sprite = emptyHeart;
             hearts[2].GetComponent<SpriteRenderer>().sprite = emptyHeart;
         }
         else if (healthPoints == 3)
         {
+            hearts[3].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+            hearts[2].GetComponent<SpriteRenderer>().sprite = emptyHeart;
             hearts[1].GetComponent<SpriteRenderer>().sprite = halfHeart;
         }
         else if (healthPoints == 2)
         {
+            hearts[3].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+            hearts[2].GetComponent<SpriteRenderer>().sprite = emptyHeart;
             hearts[1].GetComponent<SpriteRenderer>().sprite = emptyHeart;
         }
         else if (healthPoints == 1)
         {
+            hearts[3].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+            hearts[2].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+            hearts[1].GetComponent<SpriteRenderer>().sprite = emptyHeart;
             hearts[0].GetComponent<SpriteRenderer>().sprite = halfHeart;
         }
         if (healthPoints == 0)
         {
+            hearts[3].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+            hearts[2].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+            hearts[1].GetComponent<SpriteRenderer>().sprite = emptyHeart;
             hearts[0].GetComponent<SpriteRenderer>().sprite = emptyHeart;
             hasLost = true;
         }
