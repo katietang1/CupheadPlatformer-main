@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioClip jumpClip;
     public AudioClip shootClip;
+    public AudioClip ultClip;
+
+    public AudioClip onHitClip;
+    public AudioClip onHitClip2;
 
     private float potionTimeMax = 10f;
     private float potionTimeCur = 0f;
@@ -30,8 +34,9 @@ public class PlayerMovement : MonoBehaviour
     public float ultSpeed;
     private int timer = 0;
 
-    public int healthPoints = 4;
+    public int healthPoints = 8;
     public Sprite fullHeart;
+    public Sprite halfHeart;
     public Sprite emptyHeart;
     public GameObject ultReady;
     public GameObject[] hearts = new GameObject[4];
@@ -87,17 +92,34 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckHP()
     {
-        if (healthPoints == 3)
+        Debug.Log("HEALTH POINTS: " + healthPoints);
+        if (healthPoints == 7)
+        {
+            hearts[3].GetComponent<SpriteRenderer>().sprite = halfHeart;
+        }
+        else if (healthPoints == 6)
         {
             hearts[3].GetComponent<SpriteRenderer>().sprite = emptyHeart;
         }
-        else if (healthPoints == 2)
+        else if (healthPoints == 5)
+        {
+            hearts[2].GetComponent<SpriteRenderer>().sprite = halfHeart;
+        }
+        else if (healthPoints == 4)
         {
             hearts[2].GetComponent<SpriteRenderer>().sprite = emptyHeart;
         }
-        else if (healthPoints == 1)
+        else if (healthPoints == 3)
+        {
+            hearts[1].GetComponent<SpriteRenderer>().sprite = halfHeart;
+        }
+        else if (healthPoints == 2)
         {
             hearts[1].GetComponent<SpriteRenderer>().sprite = emptyHeart;
+        }
+        else if (healthPoints == 1)
+        {
+            hearts[0].GetComponent<SpriteRenderer>().sprite = halfHeart;
         }
         if (healthPoints == 0)
         {
@@ -108,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ResetHP()
     {
-        healthPoints = 4;
+        healthPoints = 8;
         for (int i = 0; i < 4; i++)
         {
             hearts[i].GetComponent<SpriteRenderer>().sprite = fullHeart;
@@ -119,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
         hearts[3].transform.position = new Vector3(-6.5f, 4, -1);
     }
 
-    private void Shoot(GameObject attack, float speed)
+    private void Shoot(GameObject attack, float speed, AudioClip shootClip)
     {
         GameObject clone;
         Rigidbody2D rb;
@@ -182,21 +204,21 @@ public class PlayerMovement : MonoBehaviour
             if (timer == 0)
             {
                 Debug.Log("Shot shot");
-                timer = 400;
+                timer = 350;
                 // create attack object at player location
-                Shoot(normalAttack, bulletSpeed);
+                Shoot(normalAttack, bulletSpeed, shootClip);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if (timer == 0 && (ultPoints >= 20))
+            if (timer == 0 && (ultPoints >= 15))
             {
-                timer = 400;
-                ultPoints -= 20;
+                timer = 350;
+                ultPoints = 0;
                 Debug.Log("shot ult");
                 // create attack object at player location
-                Shoot(ultAttack, ultSpeed);
+                Shoot(ultAttack, ultSpeed, ultClip);
             }
         }
     }
@@ -207,8 +229,15 @@ public class PlayerMovement : MonoBehaviour
         {
             invincibleTime = 1200;
             healthPoints--;
-            CheckHP();
+            AudioSource.PlayClipAtPoint(onHitClip, transform.position);
         }
+        if(collision.gameObject.tag == "EnemyProjectile2")
+        {
+            invincibleTime = 1200;
+            healthPoints -= 2;
+            AudioSource.PlayClipAtPoint(onHitClip2, transform.position);
+        }
+        CheckHP();
     }
 
     private void Lost()

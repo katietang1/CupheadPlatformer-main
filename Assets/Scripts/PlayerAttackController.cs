@@ -33,7 +33,7 @@ public class PlayerAttackController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Platforms" || collision.gameObject.tag == "EnemyProjectile")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Platforms" || collision.gameObject.tag == "EnemyProjectile" || collision.gameObject.tag == "EnemyProjectile2")
         {
             GameObject.Destroy(this.gameObject);
         }

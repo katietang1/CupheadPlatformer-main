@@ -1036,16 +1036,21 @@ MonoBehaviour:
   hasSpeedPotion: 0
   potionModAmount: 0
   jumpClip: {fileID: 8300000, guid: 41677b43e3a2e224dbd8c6054a6c1818, type: 3}
-  shootClip: {fileID: 8300000, guid: e08b739ebba87be4daf86cc9ada31e4b, type: 3}
+  shootClip: {fileID: 8300000, guid: bd83fe12f4d8c9e46b00a2f97ebbe8e9, type: 3}
+  ultClip: {fileID: 8300000, guid: 016924a1673472a4d989454d1be954ad, type: 3}
+  onHitClip: {fileID: 8300000, guid: 5f2db8dd1973c5b42be4e5c967a432c5, type: 3}
+  onHitClip2: {fileID: 8300000, guid: fe95527e8fe5ac14396e0c207752475c, type: 3}
   normalAttack: {fileID: 8610171772068902991, guid: bacd63a70d798cf49844eafe5999fc81,
     type: 3}
   ultAttack: {fileID: 2844533786082036002, guid: 9715225a307ba144b8ba3f5777f8d9c2,
     type: 3}
   ultPoints: 0
-  bulletSpeed: 4
-  ultSpeed: 8
-  healthPoints: 4
+  bulletSpeed: 6
+  ultSpeed: 9
+  healthPoints: 8
   fullHeart: {fileID: -5094089424195594829, guid: 77e9825d426f3411e828b4176fc74dbc,
+    type: 3}
+  halfHeart: {fileID: 1386842610564518377, guid: 77e9825d426f3411e828b4176fc74dbc,
     type: 3}
   emptyHeart: {fileID: -8664860381354898460, guid: 77e9825d426f3411e828b4176fc74dbc,
     type: 3}
@@ -1209,18 +1214,20 @@ MonoBehaviour:
   - {fileID: 1997550082}
   - {fileID: 1305258258}
   player: {fileID: 848778903}
-  hitClip: {fileID: 8300000, guid: 04bd4cbb8a6513d4ca73a121315036ec, type: 3}
+  hitClip: {fileID: 8300000, guid: c64d16c777e3a6f4289c62eded5a4533, type: 3}
+  ultHitClip: {fileID: 8300000, guid: bf9066eb016370545ab579842ed19b4b, type: 3}
   fireClip1: {fileID: 8300000, guid: 7683e687034ebb34582779658abbdfe3, type: 3}
   fireClip2: {fileID: 8300000, guid: a87c7385a65a0ee41b07387504e65a3b, type: 3}
   normalAttack: {fileID: 1448239018278594741, guid: 3b5c054da9b714366a92103945d3f88a,
     type: 3}
   secondAttack: {fileID: 4325758475859275025, guid: 8a27e797628ce45d094dc84b4d27fc1b,
     type: 3}
-  bulletSpeed: 5
+  bulletSpeed: 6
   startpos: {x: 7.73, y: 2.26, z: 0}
   corner2: {x: -7.52, y: 2.26, z: 0}
   corner3: {x: -7, y: -1.62, z: 0}
   corner4: {x: 7.9, y: -1.62, z: 0}
+  Player: {fileID: 848778900}
 --- !u!1001 &884018634
 PrefabInstance:
   m_ObjectHideFlags: 0

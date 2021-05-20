@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     public PlayerMovement player;
 
     public AudioClip hitClip;
+    public AudioClip ultHitClip;
     public AudioClip fireClip1;
     public AudioClip fireClip2;
 
@@ -32,6 +33,8 @@ public class EnemyController : MonoBehaviour
     private bool facingright = false;
 
     private bool hasWon = false;
+
+    public Transform Player;
 
     void Start()
     {
@@ -139,13 +142,13 @@ public class EnemyController : MonoBehaviour
         if(bulletTimer == 0)
         {
             Shoot(normalAttack, bulletSpeed, fireClip1);
-            bulletTimer = 2000;
+            bulletTimer = 1900;
             Debug.Log("shot enemy");
         }
         if(bulletTimer2 == 0)
         {
             Shoot(secondAttack, bulletSpeed, fireClip2);
-            bulletTimer2 = 1000;
+            bulletTimer2 = 900;
         }
     }
 
@@ -162,7 +165,7 @@ public class EnemyController : MonoBehaviour
         AudioSource.PlayClipAtPoint(fireClip, transform.position);
 
         Vector3 local = transform.localScale;
-        Debug.Log(transform.localScale.x);
+        //Debug.Log(transform.localScale.x);
         if (local.x > 0)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
@@ -183,7 +186,6 @@ public class EnemyController : MonoBehaviour
             invincibleTime = 1200;
             enemyHealth -= 2;
             player.ultPoints++;
-            CheckHP();
             AudioSource.PlayClipAtPoint(hitClip, transform.position);
         }
 
@@ -191,31 +193,32 @@ public class EnemyController : MonoBehaviour
         {
             invincibleTime = 1200;
             enemyHealth -= 5;
-            CheckHP();
-            AudioSource.PlayClipAtPoint(hitClip, transform.position);
+            AudioSource.PlayClipAtPoint(ultHitClip, transform.position);
         }
+
+        CheckHP();
     }
 
     IEnumerator MoveTowards(Vector3 start, Vector3 destination, float speed)
     {
         while ((transform.position - destination).sqrMagnitude > 0.01f)
         {
-            DirectionCheck(destination);
+            DirectionCheck(Player);
             this.transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
             yield return null;
         }
     }
 
-    private void DirectionCheck(Vector3 destination)
+    private void DirectionCheck(Transform player)
     {
-        if (destination.x > transform.position.x && !facingright)
+        if (player.transform.position.x > transform.position.x && !facingright)
         {
             facingright = true;
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
         }
-        else if (destination.x < transform.position.x && facingright)
+        else if (player.transform.position.x < transform.position.x && facingright)
         {
             facingright = false;
             Vector3 theScale = transform.localScale;
