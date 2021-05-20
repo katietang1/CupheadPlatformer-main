@@ -139,6 +139,10 @@ public class PlayerMovement : MonoBehaviour
             hearts[0].GetComponent<SpriteRenderer>().sprite = emptyHeart;
             hasLost = true;
         }
+        if (hasLost)
+        {
+            SceneManager.LoadScene("LoseScene");
+        }
     }
 
     private void ResetHP()
@@ -251,16 +255,6 @@ public class PlayerMovement : MonoBehaviour
             AudioSource.PlayClipAtPoint(onHitClip2, transform.position);
         }
         CheckHP();
-    }
-
-    private void Lost()
-    {
-        if (hasLost)
-        {
-            //Play lose sound effect
-            SceneManager.LoadScene("LoseScene");
-        }
-
     }
 
 }

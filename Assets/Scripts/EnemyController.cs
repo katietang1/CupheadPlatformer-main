@@ -124,6 +124,11 @@ public class EnemyController : MonoBehaviour
             hearts[3].GetComponent<SpriteRenderer>().sprite = emptyHeart;
             hasWon = true;
         }
+        if (hasWon)
+        {
+            //Play enemy death animation
+            SceneManager.LoadScene("WonScene");
+        }
     }
     private void ResetHP()
     {
@@ -228,13 +233,4 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Won()
-    {
-        if (hasWon)
-        {
-            //Play enemy death animation
-            //Play won sound
-            SceneManager.LoadScene("WonScene");
-        }
-    }
 }
