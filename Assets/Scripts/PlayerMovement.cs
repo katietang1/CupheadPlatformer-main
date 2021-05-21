@@ -220,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (timer == 0)
             {
-                timer = 250;
+                timer = 150;
                 // create attack object at player location
                 Shoot(normalAttack, bulletSpeed, shootClip);
             }
@@ -230,7 +230,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (timer == 0 && (ultPoints >= 10))
             {
-                timer = 250;
+                timer = 150;
                 ultPoints = 0;
                 // create attack object at player location
                 Shoot(ultAttack, ultSpeed, ultClip);
