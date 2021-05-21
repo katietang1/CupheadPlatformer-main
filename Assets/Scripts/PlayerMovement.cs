@@ -220,7 +220,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if (timer == 0)
             {
-                Debug.Log("Shot shot");
                 timer = 250;
                 // create attack object at player location
                 Shoot(normalAttack, bulletSpeed, shootClip);
@@ -233,7 +232,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 timer = 250;
                 ultPoints = 0;
-                Debug.Log("shot ult");
                 // create attack object at player location
                 Shoot(ultAttack, ultSpeed, ultClip);
             }
