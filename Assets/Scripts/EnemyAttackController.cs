@@ -24,7 +24,7 @@ public class EnemyAttackController : MonoBehaviour
         {
             GameObject.Destroy(this.gameObject);
         }
-        if (collision.gameObject.tag == "PlayerAttack")
+        if (collision.gameObject.tag == "PlayerAttack"  || collision.gameObject.tag == "PlayerUlt")
         {
             GameObject.Destroy(this.gameObject);
             AudioSource.PlayClipAtPoint(collisionClip, transform.position);

@@ -119,7 +119,7 @@ public class EnemyController : MonoBehaviour
         {
             hearts[3].GetComponent<SpriteRenderer>().sprite = halfHeart;
         }
-        if (enemyHealth == 0)
+        if (enemyHealth == 0 || enemyHealth < 0)
         {
             hearts[3].GetComponent<SpriteRenderer>().sprite = emptyHeart;
             hasWon = true;
@@ -148,13 +148,13 @@ public class EnemyController : MonoBehaviour
         if(bulletTimer == 0)
         {
             Shoot(normalAttack, bulletSpeed, fireClip1);
-            bulletTimer = 1900;
+            bulletTimer = 1600;
             Debug.Log("shot enemy");
         }
         if(bulletTimer2 == 0)
         {
             Shoot(secondAttack, bulletSpeed, fireClip2);
-            bulletTimer2 = 900;
+            bulletTimer2 = 600;
         }
     }
 
@@ -190,7 +190,7 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "PlayerAttack")
         {
             invincibleTime = 1200;
-            enemyHealth -= 2;
+            enemyHealth -= 4;
             player.ultPoints++;
             AudioSource.PlayClipAtPoint(hitClip, transform.position);
         }
@@ -198,7 +198,7 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "PlayerUlt")
         {
             invincibleTime = 1200;
-            enemyHealth -= 5;
+            enemyHealth -= 8;
             AudioSource.PlayClipAtPoint(ultHitClip, transform.position);
         }
 

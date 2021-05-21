@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ultPoints >= 20)
+        if (ultPoints >= 10)
         {
             ultReady.GetComponent<SpriteRenderer>().enabled = true;
         }
@@ -221,7 +221,7 @@ public class PlayerMovement : MonoBehaviour
             if (timer == 0)
             {
                 Debug.Log("Shot shot");
-                timer = 350;
+                timer = 250;
                 // create attack object at player location
                 Shoot(normalAttack, bulletSpeed, shootClip);
             }
@@ -229,9 +229,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if (timer == 0 && (ultPoints >= 15))
+            if (timer == 0 && (ultPoints >= 10))
             {
-                timer = 350;
+                timer = 250;
                 ultPoints = 0;
                 Debug.Log("shot ult");
                 // create attack object at player location
