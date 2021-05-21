@@ -1,5 +1,5 @@
 1. 	Katie Tang, Minna Yu, Darren Pak
-	2313452, 2378963, 
+	2313452, 2378963, 2375925
 	htang@chapman.edu
 	minyu@chapman.edu
 	CPSC 236-3
