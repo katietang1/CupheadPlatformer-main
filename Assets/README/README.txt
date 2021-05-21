@@ -2,6 +2,7 @@
 	2313452, 2378963, 2375925
 	htang@chapman.edu
 	minyu@chapman.edu
+	dapak@chapman.edu
 	CPSC 236-3
 	Final Project: 2D Cuphead Style Platformer 
 
